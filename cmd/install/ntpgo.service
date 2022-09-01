@@ -1,0 +1,13 @@
+[Unit]
+Description=ntpgo ntp client
+After=network.target auditd.service
+
+[Service]
+ExecStart=/usr/bin/ntpgo sync
+KillMode=process
+Restart=on-failure
+RestartPreventExitStatus=255
+
+[Install]
+WantedBy=multi-user.target
+Alias=ntpgo.service
