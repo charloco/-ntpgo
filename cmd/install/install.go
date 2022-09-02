@@ -55,6 +55,8 @@ var InstallCmd = &cobra.Command{
 				logrus.Fatal(err)
 			}
 		}
+		//try to stop
+		exec.Command("systemctl", "stop", "ntpgo").Run()
 		file, err := exec.LookPath(os.Args[0])
 		if err != nil {
 			logrus.Fatal(err)
@@ -73,6 +75,8 @@ var InstallCmd = &cobra.Command{
 		if err != nil {
 			logrus.Fatal(err)
 		}
+		//try to start
+		exec.Command("systemctl", "start", "ntpgo").Run()
 	},
 }
 
